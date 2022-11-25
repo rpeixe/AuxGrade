@@ -1,0 +1,29 @@
+{% extends 'app/header.html' %} {% block content %}
+<div>
+  <div class="container">
+    <div class="box">
+      <div class="large-box">
+        <div class="box-title card-title-large">
+          <h3>Perfil</h3>
+        </div>
+
+        <h5 class="user-title">Nome:</h5>
+        <p class="box-text ">{{user}}</p>
+        <h5 class="user-title">Cursando:</h5>
+        <p class="box-text">{{degree}}</p>
+
+        <div>
+          <button
+            class="btn"
+            style="background-color: #e0ddaa"
+            onclick="window.location.href='/selecao/';"
+          >
+            Alterar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
+</div>

@@ -1,0 +1,75 @@
+{% extends 'app/header.html' %} {% block content %} 
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 text-center">
+      <div class="box-column">
+        <div class="box">
+          <div class="box-header box-gradient">
+            <i class="fas fa-solid fa-book fa-3x"></i>
+          </div>
+          <div class="box-bottom">
+            <div class="box-title card-title">
+              <h3>Bacharelado em Ciência e Tecnologia</h3>
+            </div>
+            <div class="box-text"></div>
+            <button
+              class="btn"
+              style="background-color: #e0ddaa"
+              onclick="window.location.href='BCT_selected/';"
+            >
+            SELECIONAR
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4  text-center">
+      <div class="box-column">
+        <div class="box">
+          <div class="box-header box-gradient">
+            <i class="fas fa-solid fa-code fa-3x"></i>
+          </div>
+          <div class="box-bottom">
+            <div class="box-title card-title">
+              <h3>Ciência da Computação</h3>
+            </div>
+            <div class="box-text"></div>
+            <button
+              class="btn"
+              style="background-color: #e0ddaa"
+              onclick="window.location.href='BCC_selected/';"
+            >
+            SELECIONAR
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4  text-center">
+      <div class="box-column">
+        <div class="box">
+          <div class="box-header box-gradient">
+            <i class="fas fa-solid fa-microchip fa-3x"></i>
+          </div>
+          <div class="box-bottom">
+            <div class="box-title card-title">
+              <h3>Engenharia da Computação</h3>
+            </div>
+            <div class="box-text"></div>
+            <button
+              class="btn"
+              style="background-color: #e0ddaa"
+              onclick="window.location.href='EComp_selected/';"
+            >
+            SELECIONAR
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

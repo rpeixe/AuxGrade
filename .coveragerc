@@ -1,0 +1,9 @@
+[run]
+source = .
+omit =
+    */migrations/*
+    manage.py
+    auxgrade/asgi.py
+    auxgrade/wsgi.py
+[report]
+skip_covered = True

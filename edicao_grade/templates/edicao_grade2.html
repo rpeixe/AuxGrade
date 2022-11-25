@@ -1,0 +1,969 @@
+{% extends 'app/header.html' %} {% block content %}
+
+<section class="white-section">
+  <form action="" method="post">
+    {% csrf_token %}
+
+<style>
+  body{
+    color: white;
+  }
+
+</style>
+
+<div class="container">
+  <div class="box center">
+
+    <ul class="nav nav-tabs " id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="segunda-tab" data-toggle="tab" href="#home" type="button" aria-selected="true">Seg</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="terca-tab" data-toggle="tab" href="#terca" type="button" aria-selected="false">Ter</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="quarta-tab" data-toggle="tab" href="#quarta" type="button" aria-selected="false">Qua</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="quinta-tab" data-toggle="tab" href="#quinta" type="button" aria-selected="false">Quin</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="sexta-tab" data-toggle="tab" href="#sexta" type="button" aria-selected="false">Sex</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="sabado-tab" data-toggle="tab" href="#sabado" type="button" aria-selected="false">Sab</button>
+      </li>
+    </ul>
+
+    <div class="large-box">
+    <div class="row">
+      <div class="col-4 text-center">
+        
+          <div class="text-center border-bottom border-dark">
+              08:00 - 10:00
+          </div>
+          <div class="text-center border-bottom border-dark">
+              10:00 - 12:00
+          </div>
+          <div class="text-center border-bottom border-dark">
+              12:00 - 13:30
+          </div>
+          <div class="text-center border-bottom border-dark">
+              13:30 - 15:30
+          </div>
+          <div class="text-center border-bottom border-dark">
+              15:30 - 17:30
+          </div>
+          <div class="text-center border-bottom border-dark">
+              17:30 - 19:00
+          </div>
+          <div class="text-center border-bottom border-dark">
+              19:00 - 21:00
+          </div>
+          <div class="text-center">
+              21:00 - 23:00
+          </div>
+
+      </div>
+      <div class="col-8 text-center fixed">
+      <div class="tab-content " id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" >
+          <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+            
+            <option selected>------</option>
+            {% for course in mon_courses %}
+            {% if course.day1 == 'MON' and course.time1 ==  oito%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day2 == 'MON' and course.time2 ==  oito%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day3 == 'MON' and course.time3 ==  oito%}
+            <option value="{{course}}">{{course.name}}</option>
+            {%endif%}
+            {%endfor%}
+
+            {% for sec in user_sections %}
+            {% if sec.day1 == 'MON' and sec.time1 ==  oito%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day2 == 'MON' and sec.time2 ==  oito%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day3 == 'MON' and sec.time3 ==  oito%}
+            <option selected>{{sec.name}}</option>
+            {%endif%}
+            {%endfor%}
+          </select> 
+          
+          
+        <br>
+        
+          <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+
+            <option selected>------</option>
+            {% for course in mon_courses %}
+            {% if course.day1 == 'MON' and course.time1 ==  dez%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day2 == 'MON' and course.time2 ==  dez%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day3 == 'MON' and course.time3 ==  dez%}
+            <option value="{{course}}">{{course.name}}</option>
+            {%endif%}
+            {%endfor%}
+
+            {% for sec in user_sections %}
+            {% if sec.day1 == 'MON' and sec.time1 ==  dez%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day2 == 'MON' and sec.time2 ==  dez%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day3 == 'MON' and sec.time3 ==  dez%}
+            <option selected>{{sec.name}}</option>
+            {%endif%}
+            {%endfor%}
+          </select>
+
+          <br>Almoço<br>
+          <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+            
+            <option selected>------</option>
+            {% for course in mon_courses %}
+            {% if course.day1 == 'MON' and course.time1 ==  uma_meia%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day2 == 'MON' and course.time2 ==  uma_meia%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day3 == 'MON' and course.time3 ==  uma_meia%}
+            <option value="{{course}}">{{course.name}}</option>
+            {%endif%}
+            {%endfor%}
+
+            {% for sec in user_sections %}
+            {% if sec.day1 == 'MON' and sec.time1 ==  uma_meia%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day2 == 'MON' and sec.time2 ==  uma_meia%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day3 == 'MON' and sec.time3 ==  uma_meia%}
+            <option selected>{{sec.name}}</option>
+            {%endif%}
+            {%endfor%}
+          </select>
+          <br>
+          <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+            
+            <option selected>------</option>
+            {% for course in mon_courses %}
+            {% if course.day1 == 'MON' and course.time1 ==  tres_meia%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day2 == 'MON' and course.time2 ==  tres_meia%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day3 == 'MON' and course.time3 ==  tres_meia%}
+            <option value="{{course}}">{{course.name}}</option>
+            {%endif%}
+            {%endfor%}
+
+            {% for sec in user_sections %}
+            {% if sec.day1 == 'MON' and sec.time1 ==  tres_meia%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day2 == 'MON' and sec.time2 ==  tres_meia%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day3 == 'MON' and sec.time3 ==  tres_meia%}
+            <option selected>{{sec.name}}</option>
+            {%endif%}
+            {%endfor%}
+            
+          </select>
+          <br>Janta<br>
+          <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+          
+            <option selected>------</option>
+            {% for course in mon_courses %}
+            {% if course.day1 == 'MON' and course.time1 ==  sete%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day2 == 'MON' and course.time2 ==  sete%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day3 == 'MON' and course.time3 ==  sete%}
+            <option value="{{course}}">{{course.name}}</option>
+            {%endif%}
+            {%endfor%}
+
+            {% for sec in user_sections %}
+            {% if sec.day1 == 'MON' and sec.time1 ==  sete%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day2 == 'MON' and sec.time2 ==  sete%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day3 == 'MON' and sec.time3 ==  sete%}
+            <option selected>{{sec.name}}</option>
+            {%endif%}
+            {%endfor%}
+          </select>
+          <br>
+          <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+            
+            <option selected>------</option>
+            {% for course in mon_courses %}
+            {% if course.day1 == 'MON' and course.time1 ==  nove%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day2 == 'MON' and course.time2 ==  nove%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day3 == 'MON' and course.time3 ==  nove%}
+            <option value="{{course}}">{{course.name}}</option>
+            {%endif%}
+            {%endfor%}
+
+            {% for sec in user_sections %}
+            {% if sec.day1 == 'MON' and sec.time1 ==  nove%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day2 == 'MON' and sec.time2 ==  nove%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day3 == 'MON' and sec.time3 ==  nove%}
+            <option selected>{{sec.name}}</option>
+            {%endif%}
+            {%endfor%}
+          </select>
+  
+      
+        </div>
+        <div class="tab-pane fade" id="terca" role="tabpanel">
+          <select class="form-select box-header-card col-10 " aria-label="Default select example" name="courses">
+            
+            <option selected>------</option>
+            {% for course in tue_courses %}
+            {% if course.day1 == 'TUE' and course.time1 ==  oito%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day2 == 'TUE' and course.time2 ==  oito%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day3 == 'TUE' and course.time3 ==  oito%}
+            <option value="{{course}}">{{course.name}}</option>
+            {%endif%}
+            {%endfor%}
+
+            {% for sec in user_sections %}
+            {% if sec.day1 == 'TUE' and sec.time1 ==  oito%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day2 == 'TUE' and sec.time2 ==  oito%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day3 == 'TUE' and sec.time3 ==  oito%}
+            <option selected>{{sec.name}}</option>
+            {%endif%}
+            {%endfor%}
+          </select> 
+       
+          <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+            
+            <option selected>------</option>           
+            {% for course in tue_courses %}
+            {% if course.day1 == 'TUE' and course.time1 ==  dez%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day2 == 'TUE' and course.time2 ==  dez%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day3 == 'TUE' and course.time3 ==  dez%}
+            <option value="{{course}}">{{course.name}}</option>
+            {%endif%}
+            {%endfor%}
+
+            {% for sec in user_sections %}
+            {% if sec.day1 == 'TUE' and sec.time1 ==  dez%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day2 == 'TUE' and sec.time2 ==  dez%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day3 == 'TUE' and sec.time3 ==  dez%}
+            <option selected>{{sec.name}}</option>
+            {%endif%}
+            {%endfor%}
+
+          </select>
+          <br>Almoço<br>
+          <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+            
+            <option selected>------</option>  
+            {% for course in tue_courses %}
+            {% if course.day1 == 'TUE' and course.time1 ==  uma_meia%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day2 == 'TUE' and course.time2 ==  uma_meia%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day3 == 'TUE' and course.time3 ==  uma_meia%}
+            <option value="{{course}}">{{course.name}}</option>
+            {%endif%}
+            {%endfor%}
+
+            {% for sec in user_sections %}
+            {% if sec.day1 == 'TUE' and sec.time1 ==  uma_meia%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day2 == 'TUE' and sec.time2 ==  uma_meia%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day3 == 'TUE' and sec.time3 ==  uma_meia%}
+            <option selected>{{sec.name}}</option>
+            {%endif%}
+            {%endfor%}
+          </select>
+          
+          <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+            
+            <option selected>------</option>  
+            {% for course in tue_courses %}
+            {% if course.day1 == 'TUE' and course.time1 ==  tres_meia%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day2 == 'TUE' and course.time2 ==  tres_meia%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day3 == 'TUE' and course.time3 ==  tres_meia%}
+            <option value="{{course}}">{{course.name}}</option>
+            {%endif%}
+            {%endfor%}
+
+            {% for sec in user_sections %}
+            {% if sec.day1 == 'TUE' and sec.time1 ==  tres_meia%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day2 == 'TUE' and sec.time2 ==  tres_meia%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day3 == 'TUE' and sec.time3 ==  tres_meia%}
+            <option selected>{{sec.name}}</option>
+            {%endif%}
+            {%endfor%}
+          </select>
+          <br>Janta<br>
+          <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+            
+            <option selected>------</option>  
+            {% for course in tue_courses %}
+            {% if course.day1 == 'TUE' and course.time1 ==  sete%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day2 == 'TUE' and course.time2 ==  sete%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day3 == 'TUE' and course.time3 ==  sete%}
+            <option value="{{course}}">{{course.name}}</option>
+            {%endif%}
+            {%endfor%}
+
+            {% for sec in user_sections %}
+            {% if sec.day1 == 'TUE' and sec.time1 ==  sete%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day2 == 'TUE' and sec.time2 ==  sete%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day3 == 'TUE' and sec.time3 ==  sete%}
+            <option selected>{{sec.name}}</option>
+            {%endif%}
+            {%endfor%}
+          </select>
+         
+          <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+            
+            <option selected>------</option> 
+            {% for course in tue_courses %}
+            {% if course.day1 == 'TUE' and course.time1 ==  nove%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day2 == 'TUE' and course.time2 ==  nove%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day3 == 'TUE' and course.time3 ==  nove%}
+            <option value="{{course}}">{{course.name}}</option>
+            {%endif%}
+            {%endfor%}
+
+            {% for sec in user_sections %}
+            {% if sec.day1 == 'TUE' and sec.time1 ==  nove%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day2 == 'TUE' and sec.time2 ==  nove%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day3 == 'TUE' and sec.time3 ==  nove%}
+            <option selected>{{sec.name}}</option>
+            {%endif%}
+            {%endfor%}
+
+          </select>
+        </div>
+        <div class="tab-pane fade" id="quarta" role="tabpanel">
+          <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+            
+            <option selected>------</option> 
+            {% for course in wed_courses %}
+            {% if course.day1 == 'WED' and course.time1 ==  oito%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day2 == 'WED' and course.time2 ==  oito%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day3 == 'WED' and course.time3 ==  oito%}
+            <option value="{{course}}">{{course.name}}</option>
+            {%endif%}
+            {%endfor%}
+
+            {% for sec in user_sections %}
+            {% if sec.day1 == 'WED' and sec.time1 ==  oito%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day2 == 'WED' and sec.time2 ==  oito%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day3 == 'WED' and sec.time3 ==  oito%}
+            <option selected>{{sec.name}}</option>
+            {%endif%}
+            {%endfor%}
+          </select> 
+    
+          <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+            
+            <option selected>------</option>             
+            {% for course in wed_courses %}
+            {% if course.day1 == 'WED' and course.time1 ==  dez%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day2 == 'WED' and course.time2 ==  dez%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day3 == 'WED' and course.time3 ==  dez%}
+            <option value="{{course}}">{{course.name}}</option>
+            {%endif%}
+            {%endfor%}
+
+            {% for sec in user_sections %}
+            {% if sec.day1 == 'WED' and sec.time1 ==  dez%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day2 == 'WED' and sec.time2 ==  dez%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day3 == 'WED' and sec.time3 ==  dez%}
+            <option selected>{{sec.name}}</option>
+            {%endif%}
+            {%endfor%}
+          </select>
+          <br>Almoço<br>
+          <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+            
+            <option selected>------</option>               
+            {% for course in wed_courses %}
+            {% if course.day1 == 'WED' and course.time1 ==  uma_meia%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day2 == 'WED' and course.time2 ==  uma_meia%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day3 == 'WED' and course.time3 ==  uma_meia%}
+            <option value="{{course}}">{{course.name}}</option>
+            {%endif%}
+            {%endfor%}
+
+            {% for sec in user_sections %}
+            {% if sec.day1 == 'WED' and sec.time1 ==  uma_meia%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day2 == 'WED' and sec.time2 ==  uma_meia%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day3 == 'WED' and sec.time3 ==  uma_meia%}
+            <option selected>{{sec.name}}</option>
+            {%endif%}
+            {%endfor%}
+          </select>
+
+          <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+            
+            <option selected>------</option>               
+            {% for course in wed_courses %}
+            {% if course.day1 == 'WED' and course.time1 ==  tres_meia%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day2 == 'WED' and course.time2 ==  tres_meia%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day3 == 'WED' and course.time3 ==  tres_meia%}
+            <option value="{{course}}">{{course.name}}</option>
+            {%endif%}
+            {%endfor%}
+
+            {% for sec in user_sections %}
+            {% if sec.day1 == 'WED' and sec.time1 ==  tres_meia%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day2 == 'WED' and sec.time2 ==  tres_meia%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day3 == 'WED' and sec.time3 ==  tres_meia%}
+            <option selected>{{sec.name}}</option>
+            {%endif%}
+            {%endfor%}
+          </select>
+          <br>Janta<br>
+          <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+            
+            <option selected>------</option> 
+            {% for course in wed_courses %}
+            {% if course.day1 == 'WED' and course.time1 ==  sete%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day2 == 'WED' and course.time2 ==  sete%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day3 == 'WED' and course.time3 ==  sete%}
+            <option value="{{course}}">{{course.name}}</option>
+            {%endif%}
+            {%endfor%}
+
+            {% for sec in user_sections %}
+            {% if sec.day1 == 'WED' and sec.time1 ==  sete%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day2 == 'WED' and sec.time2 ==  sete%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day3 == 'WED' and sec.time3 ==  sete%}
+            <option selected>{{sec.name}}</option>
+            {%endif%}
+            {%endfor%}
+          </select>
+      
+          <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+            
+            <option selected>------</option> 
+            {% for course in wed_courses %}
+            {% if course.day1 == 'WED' and course.time1 ==  nove%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day2 == 'WED' and course.time2 ==  nove%}
+            <option value="{{course}}">{{course.name}}</option>
+            {% elif course.day3 == 'WED' and course.time3 ==  nove%}
+            <option value="{{course}}">{{course.name}}</option>
+            {%endif%}
+            {%endfor%}
+
+            {% for sec in user_sections %}
+            {% if sec.day1 == 'WED' and sec.time1 ==  nove%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day2 == 'WED' and sec.time2 ==  nove%}
+            <option selected>{{sec.name}}</option>
+            {% elif sec.day3 == 'WED' and sec.time3 ==  nove%}
+            <option selected>{{sec.name}}</option>
+            {%endif%}
+            {%endfor%}
+          </select></div>
+        <div class="tab-pane fade" id="quinta" role="tabpanel" >
+          <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+          
+          <option selected>------</option>
+          {% for course in thu_courses %}
+          {% if course.day1 == 'THU' and course.time1 ==  oito%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day2 == 'THU' and course.time2 ==  oito%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day3 == 'THU' and course.time3 ==  oito%}
+          <option value="{{course}}">{{course.name}}</option>
+          {%endif%}
+          {%endfor%}
+
+          {% for sec in user_sections %}
+          {% if sec.day1 == 'THU' and sec.time1 ==  oito%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day2 == 'THU' and sec.time2 ==  oito%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day3 == 'THU' and sec.time3 ==  oito%}
+          <option selected>{{sec.name}}</option>
+          {%endif%}
+          {%endfor%}
+        </select> 
+  
+        <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+
+          <option selected>------</option>
+          {% for course in thu_courses %}
+          {% if course.day1 == 'THU' and course.time1 ==  dez%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day2 == 'THU' and course.time2 ==  dez%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day3 == 'THU' and course.time3 ==  dez%}
+          <option value="{{course}}">{{course.name}}</option>
+          {%endif%}
+          {%endfor%}
+
+          {% for sec in user_sections %}
+          {% if sec.day1 == 'THU' and sec.time1 ==  dez%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day2 == 'THU' and sec.time2 ==  dez%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day3 == 'THU' and sec.time3 ==  dez%}
+          <option selected>{{sec.name}}</option>
+          {%endif%}
+          {%endfor%}
+          
+        </select>
+        <br>Almoço<br>
+        <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+
+          <option selected>------</option>
+          {% for course in thu_courses %}
+          {% if course.day1 == 'THU' and course.time1 ==  uma_meia%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day2 == 'THU' and course.time2 ==  uma_meia%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day3 == 'THU' and course.time3 ==  uma_meia%}
+          <option value="{{course}}">{{course.name}}</option>
+          {%endif%}
+          {%endfor%}
+
+          {% for sec in user_sections %}
+          {% if sec.day1 == 'THU' and sec.time1 ==  uma_meia%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day2 == 'THU' and sec.time2 ==  uma_meia%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day3 == 'THU' and sec.time3 ==  uma_meia%}
+          <option selected>{{sec.name}}</option>
+          {%endif%}
+          {%endfor%}
+
+        </select>
+        <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+          
+          <option selected>------</option>
+          {% for course in thu_courses %}
+          {% if course.day1 == 'THU' and course.time1 ==  tres_meia%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day2 == 'THU' and course.time2 ==  tres_meia%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day3 == 'THU' and course.time3 ==  tres_meia%}
+          <option value="{{course}}">{{course.name}}</option>
+          {%endif%}
+          {%endfor%}
+
+          {% for sec in user_sections %}
+          {% if sec.day1 == 'THU' and sec.time1 ==  tres_meia%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day2 == 'THU' and sec.time2 ==  tres_meia%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day3 == 'THU' and sec.time3 ==  tres_meia%}
+          <option selected>{{sec.name}}</option>
+          {%endif%}
+          {%endfor%}
+        </select>
+        <br>Janta<br>
+        <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+          
+          <option selected>------</option>
+          {% for course in thu_courses %}
+          {% if course.day1 == 'THU' and course.time1 ==  sete%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day2 == 'THU' and course.time2 ==  sete%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day3 == 'THU' and course.time3 ==  sete%}
+          <option value="{{course}}">{{course.name}}</option>
+          {%endif%}
+          {%endfor%}
+
+          {% for sec in user_sections %}
+          {% if sec.day1 == 'THU' and sec.time1 ==  sete%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day2 == 'THU' and sec.time2 ==  sete%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day3 == 'THU' and sec.time3 ==  sete%}
+          <option selected>{{sec.name}}</option>
+          {%endif%}
+          {%endfor%}
+        </select>
+     
+        <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+          
+          <option selected>------</option>
+          {% for course in thu_courses %}
+          {% if course.day1 == 'THU' and course.time1 ==  nove%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day2 == 'THU' and course.time2 ==  nove%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day3 == 'THU' and course.time3 ==  nove%}
+          <option value="{{course}}">{{course.name}}</option>
+          {%endif%}
+          {%endfor%}
+
+          {% for sec in user_sections %}
+          {% if sec.day1 == 'THU' and sec.time1 ==  nove%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day2 == 'THU' and sec.time2 ==  nove%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day3 == 'THU' and sec.time3 ==  nove%}
+          <option selected>{{sec.name}}</option>
+          {%endif%}
+          {%endfor%}
+
+        </select></div>
+        <div class="tab-pane fade" id="sexta" role="tabpanel">
+          <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+          
+          <option selected>------</option>        
+          {% for course in fri_courses %}
+          {% if course.day1 == 'FRI' and course.time1 ==  oito%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day2 == 'FRI' and course.time2 ==  oito%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day3 == 'FRI' and course.time3 ==  oito%}
+          <option value="{{course}}">{{course.name}}</option>
+          {%endif%}
+          {%endfor%}
+
+          {% for sec in user_sections %}
+          {% if sec.day1 == 'FRI' and sec.time1 ==  oito%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day2 == 'FRI' and sec.time2 ==  oito%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day3 == 'FRI' and sec.time3 ==  oito%}
+          <option selected>{{sec.name}}</option>
+          {%endif%}
+          {%endfor%} 
+        </select> 
+   
+        <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+          
+          <option selected>------</option> 
+          {% for course in fri_courses %}
+          {% if course.day1 == 'FRI' and course.time1 ==  dez%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day2 == 'FRI' and course.time2 ==  dez%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day3 == 'FRI' and course.time3 ==  dez%}
+          <option value="{{course}}">{{course.name}}</option>
+          {%endif%}
+          {%endfor%}
+
+          {% for sec in user_sections %}
+          {% if sec.day1 == 'FRI' and sec.time1 ==  dez%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day2 == 'FRI' and sec.time2 ==  dez%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day3 == 'FRI' and sec.time3 ==  dez%}
+          <option selected>{{sec.name}}</option>
+          {%endif%}
+          {%endfor%} 
+
+        </select>
+        <br>Almoço<br>
+        <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+          
+          <option selected>------</option> 
+          {% for course in fri_courses %}
+          {% if course.day1 == 'FRI' and course.time1 ==  uma_meia%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day2 == 'FRI' and course.time2 ==  uma_meia%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day3 == 'FRI' and course.time3 ==  uma_meia%}
+          <option value="{{course}}">{{course.name}}</option>
+          {%endif%}
+          {%endfor%}
+
+          {% for sec in user_sections %}
+          {% if sec.day1 == 'FRI' and sec.time1 ==  uma_meia%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day2 == 'FRI' and sec.time2 ==  uma_meia%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day3 == 'FRI' and sec.time3 ==  uma_meia%}
+          <option selected>{{sec.name}}</option>
+          {%endif%}
+          {%endfor%} 
+        </select>
+ 
+        <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+          
+          <option selected>------</option> 
+          {% for course in fri_courses %}
+          {% if course.day1 == 'FRI' and course.time1 ==  tres_meia%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day2 == 'FRI' and course.time2 ==  tres_meia%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day3 == 'FRI' and course.time3 ==  tres_meia%}
+          <option value="{{course}}">{{course.name}}</option>
+          {%endif%}
+          {%endfor%}
+
+          {% for sec in user_sections %}
+          {% if sec.day1 == 'FRI' and sec.time1 ==  tres_meia%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day2 == 'FRI' and sec.time2 ==  tres_meia%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day3 == 'FRI' and sec.time3 ==  tres_meia%}
+          <option selected>{{sec.name}}</option>
+          {%endif%}
+          {%endfor%} 
+
+        </select>
+        <br>Janta<br>
+        <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+          
+          <option selected>------</option>
+          {% for course in fri_courses %}
+          {% if course.day1 == 'FRI' and course.time1 ==  sete%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day2 == 'FRI' and course.time2 ==  sete%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day3 == 'FRI' and course.time3 ==  sete%}
+          <option value="{{course}}">{{course.name}}</option>
+          {%endif%}
+          {%endfor%}
+
+          {% for sec in user_sections %}
+          {% if sec.day1 == 'FRI' and sec.time1 ==  sete%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day2 == 'FRI' and sec.time2 ==  sete%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day3 == 'FRI' and sec.time3 ==  sete%}
+          <option selected>{{sec.name}}</option>
+          {%endif%}
+          {%endfor%}
+        </select>
+   
+        <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+          
+          <option selected>------</option>
+          {% for course in fri_courses %}
+          {% if course.day1 == 'FRI' and course.time1 ==  nove%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day2 == 'FRI' and course.time2 ==  nove%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day3 == 'FRI' and course.time3 ==  nove%}
+          <option value="{{course}}">{{course.name}}</option>
+          {%endif%}
+          {%endfor%}
+
+          {% for sec in user_sections %}
+          {% if sec.day1 == 'FRI' and sec.time1 ==  nove%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day2 == 'FRI' and sec.time2 ==  nove%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day3 == 'FRI' and sec.time3 ==  nove%}
+          <option selected>{{sec.name}}</option>
+          {%endif%}
+          {%endfor%} 
+        </select></div>
+        <div class="tab-pane fade" id="sabado" role="tabpanel" >
+          <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+          
+          <option selected>------</option>
+          {% for course in sat_courses %}
+          {% if course.day1 == 'SAT' and course.time1 ==  oito%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day2 == 'SAT' and course.time2 ==  oito%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day3 == 'SAT' and course.time3 ==  oito%}
+          <option value="{{course}}">{{course.name}}</option>
+          {%endif%}
+          {%endfor%}
+
+          {% for sec in user_sections %}
+          {% if sec.day1 == 'SAT' and sec.time1 ==  oito%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day2 == 'SAT' and sec.time2 ==  oito%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day3 == 'SAT' and sec.time3 ==  oito%}
+          <option selected>{{sec.name}}</option>
+          {%endif%}
+          {%endfor%}  
+        </select> 
+     
+        <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+          
+          <option selected>------</option>
+          {% for course in sat_courses %}
+          {% if course.day1 == 'SAT' and course.time1 ==  dez%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day2 == 'SAT' and course.time2 ==  dez%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day3 == 'SAT' and course.time3 ==  dez%}
+          <option value="{{course}}">{{course.name}}</option>
+          {%endif%}
+          {%endfor%}
+
+          {% for sec in user_sections %}
+          {% if sec.day1 == 'SAT' and sec.time1 ==  dez%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day2 == 'SAT' and sec.time2 ==  dez%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day3 == 'SAT' and sec.time3 ==  dez%}
+          <option selected>{{sec.name}}</option>
+          {%endif%}
+          {%endfor%} 
+
+        </select>
+        <br>Almoço<br>
+        <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+          
+          <option selected>------</option>
+          {% for course in sat_courses %}
+          {% if course.day1 == 'SAT' and course.time1 ==  uma_meia%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day2 == 'SAT' and course.time2 ==  uma_meia%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day3 == 'SAT' and course.time3 ==  uma_meia%}
+          <option value="{{course}}">{{course.name}}</option>
+          {%endif%}
+          {%endfor%}
+
+          {% for sec in user_sections %}
+          {% if sec.day1 == 'SAT' and sec.time1 ==  uma_meia%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day2 == 'SAT' and sec.time2 ==  uma_meia%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day3 == 'SAT' and sec.time3 ==  uma_meia%}
+          <option selected>{{sec.name}}</option>
+          {%endif%}
+          {%endfor%} 
+        </select>
+ 
+        <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+          
+          <option selected>------</option>          
+          {% for course in sat_courses %}
+          {% if course.day1 == 'SAT' and course.time1 ==  tres_meia%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day2 == 'SAT' and course.time2 ==  tres_meia%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day3 == 'SAT' and course.time3 ==  tres_meia%}
+          <option value="{{course}}">{{course.name}}</option>
+          {%endif%}
+          {%endfor%}
+
+          {% for sec in user_sections %}
+          {% if sec.day1 == 'SAT' and sec.time1 ==  tres_meia%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day2 == 'SAT' and sec.time2 ==  tres_meia%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day3 == 'SAT' and sec.time3 ==  tres_meia%}
+          <option selected>{{sec.name}}</option>
+          {%endif%}
+          {%endfor%}  
+
+        </select>
+        <br>Janta<br>
+        <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+          
+          <option selected>------</option>  
+          {% for course in sat_courses %}
+          {% if course.day1 == 'SAT' and course.time1 ==  sete%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day2 == 'SAT' and course.time2 ==  sete%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day3 == 'SAT' and course.time3 ==  sete%}
+          <option value="{{course}}">{{course.name}}</option>
+          {%endif%}
+          {%endfor%}
+
+          {% for sec in user_sections %}
+          {% if sec.day1 == 'SAT' and sec.time1 ==  sete%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day2 == 'SAT' and sec.time2 ==  sete%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day3 == 'SAT' and sec.time3 ==  sete%}
+          <option selected>{{sec.name}}</option>
+          {%endif%}
+          {%endfor%}  
+        </select>
+    
+        <select class="form-select box-header-card col-10" aria-label="Default select example" name="courses">
+          
+          <option selected>------</option>  
+          {% for course in sat_courses %}
+          {% if course.day1 == 'SAT' and course.time1 ==  nove%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day2 == 'SAT' and course.time2 ==  nove%}
+          <option value="{{course}}">{{course.name}}</option>
+          {% elif course.day3 == 'SAT' and course.time3 ==  nove%}
+          <option value="{{course}}">{{course.name}}</option>
+          {%endif%}
+          {%endfor%}
+
+          {% for sec in user_sections %}
+          {% if sec.day1 == 'SAT' and sec.time1 ==  nove%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day2 == 'SAT' and sec.time2 ==  nove%}
+          <option selected>{{sec.name}}</option>
+          {% elif sec.day3 == 'SAT' and sec.time3 ==  nove%}
+          <option selected>{{sec.name}}</option>
+          {%endif%}
+          {%endfor%}  
+        </select></div>
+      </div>    </div>
+
+      </div>
+    
+   
+      
+    </div>   
+    <br>
+        <input
+        class="btn center"
+        style="background-color: #e0ddaa"
+        type="submit"
+        value="Submit"
+      />
+  </div>
+</div>
+</form>
+</section>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'app/header.html' %} {% block content %}
+
+<div class="container">
+  <form action="" method="post">
+    <div class="box center">
+      <div class="box-title card-title-large">
+        <h3>UCs Concluidas:</h3>
+        
+      </div>
+      <div class="row justify-content-center">
+        {% csrf_token %} {% for course in courses %}
+        <div class="col-12 text-center">
+          <div class="box-column">
+            <div class="box-checkbox">
+              <div class="box-text">
+                <input
+                  type="checkbox"
+                  class="course"
+                  multiple
+                  value="{{course.name}}"
+                  name="course_name"
+                />
+                {{course.name}}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+        <input
+          class="btn"
+          style="background-color: #e0ddaa"
+          type="submit"
+          value="Submit"
+        />
+      </div>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

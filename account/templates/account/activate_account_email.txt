@@ -1,0 +1,12 @@
+{% autoescape off %}
+Olá {{ user }},
+
+Por favor, clique no link abaixo para concluir seu registro:
+
+{{ protocol }}://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+
+Se você não fez esse pedido, você pode simplesmente ignorar este email.
+
+Sinceramente,
+AuxGrade
+{% endautoescape %}

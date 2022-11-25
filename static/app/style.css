@@ -1,0 +1,171 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900");
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #203239;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  
+}
+
+.my-navbar {
+  color: #fff;
+  min-height: 10vh;
+  background-color: #141e27;
+}
+
+.navbar-brand {
+  font-family: "Ubuntu";
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.nav-item {
+  padding: 0 18px;
+}
+
+.nav-link {
+  font-size: 1.2rem;
+  font-family: "Montserrat-Light";
+}
+
+.container {
+  width: 100vw;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.large-box {
+  background: #141e27;
+  border-radius: 10px;
+  padding: 2vh 2vw;
+  text-align: justify;
+}
+
+.box {
+  min-width: 25%;
+}
+
+.box-header {
+  max-height: 50%;
+  background: #dedede;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding-top: 20%;
+  padding-bottom: 20%;
+}
+
+.box-gradient {
+  background: linear-gradient(50deg, #eeedde, #203239);
+}
+
+.box-bottom {
+  background: #141e27;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  padding-top: 10%;
+  padding-bottom: 20%;
+}
+
+.box-text {
+  padding: 10px 0px;
+  color: #eeedde;
+}
+
+.card-title {
+  background: linear-gradient(45deg, #e0ddaa, #203239);
+  background: #e0ddaa;
+  font-size: 20px;
+  font-weight: 600;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-left: 2%;
+  padding-right: 2%;
+  letter-spacing: 1px;
+}
+
+.card-title-large {
+  background: linear-gradient(45deg, #e0ddaa, #203239);
+  background: #e0ddaa;
+  font-size: 20px;
+  font-weight: 600;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+
+  margin-bottom: 3vh;
+  margin-top: 3vh
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.social-icon {
+  margin: auto 10px;
+}
+
+.box-column {
+  margin: 1%;
+}
+
+.user-info {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  padding: 2%;
+  background-color: white;
+  border-radius: 5px;
+
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.user-title {
+  margin: 0px;
+  color: white;
+  letter-spacing: 1px;
+}
+
+.btn {
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+.box-checkbox {
+  background: #141e27;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.nav-tabs{
+  border: 0;
+}
+ .nav-link{
+  background:#141e27;
+  color:white;
+ }
+
+ .nav-tabs .nav-link.active {
+  color: black;
+  background-color: #e0ddaa;
+
+}
+
+.fixed{
+    width: 30vw;
+} 
+
