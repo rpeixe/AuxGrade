@@ -26,4 +26,5 @@ urlpatterns = [
     path('selecao_materias_concluidas/', include('selecao_materias_concluidas.urls')),
     path('editar_grade/',include('edicao_grade.urls')),
     path('materias_pendentes/',include('materias_pendentes.urls')),
+    path('horas_complementares/', include('horas_complementares.urls'))
 ]

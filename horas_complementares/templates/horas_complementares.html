@@ -1,0 +1,211 @@
+{% extends 'app/header.html' %} {% block content %}
+    <div class="container-fluid">
+
+        <div class="col-12 text-center">
+            <div class="box-column">
+                <div class="box-checkbox">
+                    <div class="box-text">
+                        <button type="button" class="btn btn-secundary" data-toggle="collapse" data-target="#demo">
+                            <i class="social-icon fas fa-table"></i></button>
+                        </button>
+                        <button type="button" class="btn btn-secundary" data-toggle="collapse" data-target="#demo2">
+                            <i class="social-icon fas fa-plus"></i></button>
+                        </button>
+                        <button type="button" class="btn btn-secundary" data-toggle="collapse" data-target="#demo3">
+                            <i class="social-icon fas fa-search"></i></button>
+                        </button>
+
+                        <div id="demo" class="collapse" style="margin-top: 30px;" aria-controls="demo demo2 demo3">
+                            <h4>Resumo</h4>
+                            <div class="row justify-content-md-center">
+                                <form class="row gy-2 gx-3 align-items-center">
+                                    <div class="col-3">
+                                        <label class="visually-hidden" for="autoSizingInput" style="padding-bottom: 10px;">Formação Cidadã</label>
+                                        <div class="alert alert-secondary" role="alert">
+                                            {{citizenship_hours}} horas cumpridas
+                                        </div>
+                                    </div>
+        
+                                    <div class="col-3">
+                                        <label class="visually-hidden" for="autoSizingInput">Extensão</label>
+                                        <div class="alert alert-secondary" role="alert">
+                                            {{extension_hours}} horas cumpridas
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-3">
+                                        <label class="visually-hidden" for="autoSizingInput">Orientação Acadêmica</label>
+                                        <div class="alert alert-secondary" role="alert">
+                                            {{orientation_hours}} horas cumpridas
+                                        </div>
+                                    </div>
+    
+                                    <div class="col-3">
+                                        <label class="visually-hidden" for="autoSizingInput">Acadêmica, Profissional ou Artística</label>
+                                        <div class="alert alert-secondary" role="alert">
+                                            {{academic_hours}} horas cumpridas
+                                        </div>
+                                    </div>
+        
+                                </form>
+                                
+                            </div>
+    
+                            <div class="row justify-content-md-center">
+                                <div class="col-3">
+                                    <div class="alert alert-warning" role="alert">
+                                        Faltam {{missing_hours}} horas
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div id="demo2" class="collapse" style="margin-top: 30px;">
+                            <h4>Adicionar</h4>
+                            <div class="row justify-content-md-center">
+                                <form action="" method="post" class="row gy-2 gx-3 align-items-center">
+                                    {% csrf_token %} <div class="col-auto">
+                                        <label class="visually-hidden" for="autoSizingName">Nome</label>
+                                        <input
+                                                type="text"
+                                                class="form-control alert-secondary"
+                                                id="autoSizingName"
+                                                placeholder="Nome da atividade"
+                                                name="autoSizingName"
+                                        />
+                                    </div>
+
+                                    <div class="col-auto">
+                                        <label class="visually-hidden" for="autoSizingHours">Horas</label>
+                                        <input
+                                                type="text"
+                                                class="form-control alert-secondary"
+                                                id="autoSizingHours"
+                                                placeholder="Quantas horas durou"
+                                                name="autoSizingHours"
+                                        />
+                                    </div>
+            
+                                    <div class="col-auto">
+                                    <label class="visually-hidden" for="autoSizingEixo">Grupo</label>
+                                    <select
+                                            class="form-select alert-secondary"
+                                            id="autoSizingEixo"
+                                            name="autoSizingEixo">
+                                        <option selected>Escolha o grupo</option>
+                                        <option value="0">Formação Cidadã</option>
+                                        <option value="1">Extensão</option>
+                                        <option value="2">Orientação Acadêmica</option>
+                                        <option value="3">Acadêmica, Profissional ou Artística</option>
+                                    </select>
+                                    </div>
+                                    <div class="col-auto">
+                                        <button
+                                                value="submit"
+                                                type="submit"
+                                                class="btn"
+                                        >Salvar
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+
+                        <div id="demo3" class="collapse" style="margin-top: 30px;">
+                            <h4>Filtrar</h4>
+                            <div class="row justify-content-md-center">
+                                <form action="" method="post" class="row gy-2 gx-3 align-items-center">
+                                    {% csrf_token %} <div class="col-auto">
+                                        <label class="visually-hidden" for="autoSizingNameSearched">Nome</label>
+                                        <input
+                                                type="text"
+                                                class="form-control alert-secondary"
+                                                id="autoSizingNameSearched"
+                                                placeholder="Nome da atividade"
+                                                name="autoSizingNameSearched"
+                                        />
+                                    </div>
+        
+                                    <div class="col-auto">
+                                        <label class="visually-hidden" for="autoSizingHoursSearched">Horas</label>
+                                        <input
+                                                type="text"
+                                                class="form-control alert-secondary"
+                                                id="autoSizingHoursSearched"
+                                                placeholder="Quantas horas durou"
+                                                name="autoSizingHoursSearched"
+                                        />
+                                    </div>
+        
+                                    <div class="col-auto">
+                                        <label class="visually-hidden" for="autoSizingEixoSearched">Grupo</label>
+                                        <select
+                                              class="form-select alert-secondary"
+                                              id="autoSizingEixoSearched"
+                                              name="autoSizingEixoSearched">
+                                        <option selected>Escolha o grupo</option>
+                                        <option value="1">Formação Cidadã</option>
+                                        <option value="2">Extensão</option>
+                                        <option value="3">Orientação Acadêmica</option>
+                                        <option value="3">Acadêmica, Profissional ou Artística</option>
+                                      </select>
+                                    </div>
+                                    <div class="col-auto">
+                                        <button
+                                                value="submit"
+                                                type="submit"
+                                                class="btn"
+                                        >Buscar
+                                        </button>
+                                    </div>
+                                </form>
+                                
+                            </div>
+                        </div>
+
+                        
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="col-12 text-center">
+            <div class="box-column">
+                <div class="box-checkbox">
+                    <div class="box-text">
+
+                        <div class="row">
+                            <div class="col">Nome da atividade</div>
+                            <div class="col">Grupo</div>
+                            <div class="col">Horas</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        <!-- Se repete pra cada atividade-->
+        {% for activity in activities %}
+        <div class="col-12 text-center">
+            <div class="box-column">
+                <div class="border-bottom border-dark">
+                    <div class="box-text row">
+                        <div class="col">{{activity.name}}</div>
+                        <div class="col">{{activity.group}}</div>
+                        <div class="col">{{activity.hours}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+
+{% endblock %}

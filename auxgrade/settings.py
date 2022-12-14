@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'edicao_grade',
     'materias_pendentes',
+    'horas_complementares',
     'coverage',
 ]
 
