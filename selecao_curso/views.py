@@ -19,7 +19,8 @@ def BCT_selected(request):
             change_degree(request.user, 'BCT')
             return redirect('menu_principal')
     except:
-        messages.info(request, 'Erro ao selecionar curso!')
+        messages.error(request, 'Erro ao selecionar curso!')
+        return redirect('degree_selection')
 
 @login_required
 def EComp_selected(request):
@@ -28,7 +29,8 @@ def EComp_selected(request):
             change_degree(request.user, 'EC')
             return redirect('menu_principal')
     except:
-        messages.info(request, 'Erro ao selecionar curso!')
+        messages.error(request, 'Erro ao selecionar curso!')
+        return redirect('degree_selection')
 
 @login_required
 def BCC_selected(request):
@@ -37,7 +39,8 @@ def BCC_selected(request):
             change_degree(request.user, 'BCC')
             return redirect('menu_principal')
     except:
-        messages.info(request, 'Erro ao selecionar curso!')
+        messages.error(request, 'Erro ao selecionar curso!')
+        return redirect('degree_selection')
 
 def change_degree(user, initials):
     user.degree = Degree.objects.get(initials = initials)
