@@ -38,6 +38,9 @@ class DegreeCourse(AbstractBaseModel):
         ('EL', 'Eletiva'),
         ('IN', 'Interdisciplinar'),
         ('OP', 'Optativa'),
+        ('G1', 'Eletiva Grupo 1'),
+        ('G2', 'Eletiva Grupo 2'),
+        ('G3', 'Eletiva Grupo 3'),
     ]
 
     degree = models.ForeignKey(Degree, on_delete = models.CASCADE)
