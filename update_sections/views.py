@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from app.models import Section, Course, SectionTime
-
+import pandas as pd
+import time
 
 @login_required
 def auto_update_sections(request):
@@ -40,3 +41,36 @@ def verify_if_not_exist_section(course, section_name):
     if section.exists():
         return 0
     return 1
+
+
+def get_sections(df):
+    sections = {}
+
+    for i in range(2, df.shape[0]):
+        for j in range(2, df.shape[1]):
+            if df.iloc[i][1] == "Docente" or str(df.iloc[i][1]) == "nan":
+                break
+            course = str(df.iloc[i][j])
+            section_name = str(df.iloc[i+1][j])
+            section_code = section_name.split("-")[0].strip()
+
+            k = j
+            while (str(df.iloc[0][k]) == "nan"):
+                k -= 1
+            section_day = df.iloc[0][k]
+            section_time = time.strftime("%H:%M", time.strptime(str(df.iloc[i][1]).split()[0].split("-")[0], "%Hh%M"))
+
+            if str(course) != "nan":
+                if course not in sections:
+                    sections[course] = {
+                        "name": course,
+                        "sections": {},
+                    }
+                if section_code not in sections[course]["sections"]:
+                    sections[course]["sections"][section_code] = {
+                        "name": section_name,
+                        "schedule": [],
+                    }
+                sections[course]["sections"][section_code]["schedule"].append((section_day, section_time))
+
+    return sections
