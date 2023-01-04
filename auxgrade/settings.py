@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'horas_complementares',
     'coverage',
     'update_sections',
+    'upload_de_materias'
 ]
 
 MIDDLEWARE = [
