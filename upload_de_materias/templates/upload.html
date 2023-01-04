@@ -1,0 +1,35 @@
+{% extends 'app/header.html' %} {% block content %}
+    
+
+    <div class="container">
+
+
+            <div class="box-column">
+                <div class="box-checkbox">
+                    <div class="box-text">
+                        <form class="centerForm" action="" method="post" enctype="multipart/form-data">
+                            
+                            <h1>Upload <i class="fas fa-cloud-upload-alt"></i></h1>
+
+                            <div class="row" style="padding: 30px;">
+                                {% csrf_token %}
+                                {{ form }}
+                            </div>
+                          
+                            <div class="row">
+                                <div class="col">
+                                    <button type="submit"><i class="far fa-paper-plane"></i> Enviar</button>
+                                </div>
+                            </div>
+                          
+                            
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+    </div>
+
+    {% endblock %}
