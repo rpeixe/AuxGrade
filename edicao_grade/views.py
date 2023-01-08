@@ -37,7 +37,7 @@ def grade_edit(request):
 
 
         for section in sections:
-            if section not in usections:
+            if section not in usections and verify_requirements(user, section.course):
                 for section_time in section.schedule.all():
                     if section_time.day == SectionTime.MONDAY:
                         monday_courses.append(section)
@@ -188,3 +188,7 @@ def auto_grade(request):
                 user_schedule.extend(section.schedule.all())
                 user_courses.append(section.course)
     return redirect("editar_grade")
+
+def verify_requirements(user, course):
+    finished_courses = user.finished_courses.all()
+    return not any(required_course not in finished_courses for required_course in course.required_courses.all()) and course not in finished_courses
