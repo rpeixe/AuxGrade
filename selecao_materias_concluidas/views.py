@@ -44,8 +44,8 @@ def interest_selection(request):
 
     if request.method == 'POST':
         if 'save' in request.POST:
-            finished_courses = request.POST.getlist('course_name')
-            add_finished_courses(user, finished_courses)
+            interested_courses = request.POST.getlist('course_name')
+            add_interested_courses(user, interested_courses)
             return redirect('menu_principal')
         elif 'searched' in request.POST:
             filtered_course_name = request.POST.get('filtered')
