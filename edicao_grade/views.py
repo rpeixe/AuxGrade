@@ -143,31 +143,32 @@ def selected_section_is_invalid(chosen_section, section_list):
                 return 1
 
 def weight_courses(user):
+    CourseWeight.objects.filter(user=user).delete()
+    user.sections.clear()
+    in_courses_completed = get_in_courses_completed(user)
     degree = user.degree
+
     for course in Course.objects.all():
-        course_weight, created = CourseWeight.objects.get_or_create(user=user, course=course)
-        course_weight.weight = 0
-        course_weight.save()
+        if verify_requirements(user, course):
+            course_weight = CourseWeight.objects.create(user=user, course=course)
 
     degree_courses = degree.courses.all()
-    for course in degree_courses:
-        course_weight, created = CourseWeight.objects.get_or_create(user = user, course = course)
-        weight = 1
-        if course.semester <= user.semester:
+    for course_weight in user.course_weights.all():
+        weight = 0
+        if course_weight.course.semester <= user.semester:
             weight += 1
-        if DegreeCourse.objects.get(degree = user.degree, course = course).course_type == 'CO':
-            weight += 1
-        elif DegreeCourse.objects.get(degree = user.degree, course = course).course_type == 'EL' or\
-            DegreeCourse.objects.get(degree = user.degree, course = course).course_type == 'IN':
-            weight += 1
+            if course_weight.course.semester == user.semester:
+                weight += 2
+        user_degree_course = DegreeCourse.objects.filter(degree = user.degree, course = course_weight.course).first()
+        if user_degree_course and user_degree_course.course_type == 'CO':
+            weight += 100
+        if any(required_course in course_weight.course.courses_that_require.all() for required_course in DegreeCourse.objects.filter(degree = degree, course_type = 'CO')):
+            weight += 50
+        bct_degree_course = DegreeCourse.objects.filter(degree__initials = 'BCT', course = course_weight.course).first()
+        if bct_degree_course and bct_degree_course.course_type == 'IN' and in_courses_completed < 4:
+            weight += 12
         course_weight.weight = weight
         course_weight.save()
-    for course in degree_courses:
-        if course.required_courses.all() != None:
-            for prereq in course.required_courses.all():
-                course_weight, created = CourseWeight.objects.get_or_create(user = user, course = prereq)
-                course_weight.weight += 1
-                course_weight.save()
     for course in user.interested_courses.all():
             course_weight, created = CourseWeight.objects.get_or_create(user=user, course=course)
             course_weight.weight += 5
@@ -192,3 +193,24 @@ def auto_grade(request):
 def verify_requirements(user, course):
     finished_courses = user.finished_courses.all()
     return not any(required_course not in finished_courses for required_course in course.required_courses.all()) and course not in finished_courses
+
+def get_in_courses_completed(user):
+    finished_courses = user.finished_courses.all()
+    num = 0
+    for course in finished_courses:
+        degree_course = DegreeCourse.objects.filter(degree__initials = 'BCT', course = course).first()
+        if degree_course and degree_course.course_type == 'IN':
+            num += 1
+    return num
+
+def get_el_hours(user):
+    finished_courses = user.finished_courses.all()
+    degree = user.degree
+    num = 0
+    for course in finished_courses:
+        degree_course = DegreeCourse.objects.filter(degree = degree, course = course).first
+        if degree_course and degree_course.course_type != 'CO':
+                num += course.hours
+        else:
+            num += course.hours
+    return num
