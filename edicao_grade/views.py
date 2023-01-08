@@ -39,17 +39,17 @@ def grade_edit(request):
         for section in sections:
             if section not in usections and verify_requirements(user, section.course):
                 for section_time in section.schedule.all():
-                    if section_time.day == SectionTime.MONDAY:
+                    if section_time.day == SectionTime.MONDAY and section not in monday_courses:
                         monday_courses.append(section)
-                    if section_time.day == SectionTime.TUESDAY:
+                    if section_time.day == SectionTime.TUESDAY and section not in tuesday_courses:
                         tuesday_courses.append(section)
-                    if section_time.day == SectionTime.WEDNESDAY:
+                    if section_time.day == SectionTime.WEDNESDAY and section not in wednesday_courses:
                         wednesday_courses.append(section)
-                    if section_time.day == SectionTime.THURSDAY:
+                    if section_time.day == SectionTime.THURSDAY and section not in thursday_courses:
                         thursday_courses.append(section)
-                    if section_time.day == SectionTime.FRIDAY:
+                    if section_time.day == SectionTime.FRIDAY and section not in friday_courses:
                         friday_courses.append(section)
-                    if section_time.day == SectionTime.SATURDAY:
+                    if section_time.day == SectionTime.SATURDAY and section not in saturday_courses:
                         saturday_courses.append(section)
 
         if request.method == 'POST':
