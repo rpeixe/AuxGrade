@@ -154,31 +154,29 @@ def weight_courses(user):
 
     degree_courses = degree.courses.all()
     for course_weight in user.course_weights.all():
-        weight = 0
-        if course_weight.course.semester <= user.semester:
-            weight += 1
-            if course_weight.course.semester == user.semester:
-                weight += 2
+        weight = 10 - course_weight.course.semester
+        if course_weight.course.semester == user.semester:
+            weight += 16
         user_degree_course = DegreeCourse.objects.filter(degree = user.degree, course = course_weight.course).first()
         if user_degree_course and user_degree_course.course_type == 'CO':
-            weight += 100
+            weight += 256
         if any(required_course in course_weight.course.courses_that_require.all() for required_course in DegreeCourse.objects.filter(degree = degree, course_type = 'CO')):
-            weight += 50
+            weight += 128
         bct_degree_course = DegreeCourse.objects.filter(degree__initials = 'BCT', course = course_weight.course).first()
+        if bct_degree_course and bct_degree_course.course_type == 'CO':
+            weight += 256
         if bct_degree_course and bct_degree_course.course_type == 'IN' and in_courses_completed < 4:
-            weight += 12
+            weight += 64
+        if course_weight.course in user.interested_courses.all() or any(course_weight.course in interested_course.required_courses.all() for interested_course in user.interested_courses.all()):
+            weight += 32
         course_weight.weight = weight
         course_weight.save()
-    for course in user.interested_courses.all():
-            course_weight, created = CourseWeight.objects.get_or_create(user=user, course=course)
-            course_weight.weight += 5
-            course_weight.save()
 
 def auto_grade(request):
     user = request.user
+    weight_courses(user)
     user_courses = get_user_courses(user)
     user_schedule = get_user_schedule(user)
-    weight_courses(user)
     course_weights = CourseWeight.objects.filter(user = user).order_by('-weight')
     for course_weight in course_weights:
         sections = Section.objects.filter(course = course_weight.course)
