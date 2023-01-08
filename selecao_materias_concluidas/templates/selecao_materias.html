@@ -9,10 +9,10 @@
       </div>
       <div class="row justify-content-center">
         <div class="col-auto">
-          <input type="text" class="form-control alert-secondary" id="autoSizingInput" placeholder="Nome da UC">
+          <input type="text" name="filtered" class="form-control alert-secondary" id="autoSizingInput" placeholder="Nome da UC">
         </div>
-        <div class="col-auto">
-            <button type="button" class="btn btn-secundary"><i class="social-icon fas fa-search"></i></button></button>
+        <div class="col-auto" style="padding-bottom: 30px">
+            <button type="submit" name="searched" class="btn btn-secundary"><i class="social-icon fas fa-search"></i></button>
         </div>
         {% csrf_token %} {% for course in courses %}
         <div class="col-12 text-center">
@@ -37,7 +37,8 @@
           class="btn"
           style="background-color: #e0ddaa"
           type="submit"
-          value="Submit"
+          name="save"
+          value="Salvar"
         />
       </div>
     </div>
