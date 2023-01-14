@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from app.models import Section, Course, CourseWeight, SectionTime, DegreeCourse
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from .forms import AgendaForm
 
 
@@ -55,7 +56,6 @@ def grade_edit(request):
         if request.method == 'POST':
             req = request.POST
             days = []
-            user_selected_course = []
             lista = []
            
             for day in req:
@@ -74,14 +74,20 @@ def grade_edit(request):
 
             for choice in lista:   
                     chosen_section_list.append(Section.objects.get(name=choice))
+            erro = 0
             for chosen_section in chosen_section_list:
                 if selected_section_is_invalid(chosen_section, chosen_section_list):
-                    return HttpResponse('Conflito de horários entre matérias')
+                    erro = 1
+                    messages.error(request, 'Conflito de horários entre matérias')
+                    break
                 if remove_section_and_verify_time_conflict(user, chosen_section):
-                    return HttpResponse('Turmas de uma mesma matéria ja foi selecionada')
-                user.sections.add(chosen_section)
-                user_selected_course.append(chosen_section)
-          
+                    erro = 1
+                    messages.error(request, 'Outra turma de uma mesma matéria ja foi selecionada')
+                    break
+            if not erro:
+                for chosen_section in chosen_section_list:
+                    user.sections.add(chosen_section)
+
             return redirect('editar_grade')
         monForm = AgendaForm(courses = monday_courses,day="0",user_sec = user_mon_sec)
         tueForm = AgendaForm(courses = tuesday_courses,day="1",user_sec = user_tue_sec)
@@ -152,19 +158,18 @@ def weight_courses(user):
         if verify_requirements(user, course):
             course_weight = CourseWeight.objects.create(user=user, course=course)
 
-    degree_courses = degree.courses.all()
     for course_weight in user.course_weights.all():
         weight = 10 - course_weight.course.semester
         if course_weight.course.semester == user.semester:
             weight += 16
+        bct_degree_course = DegreeCourse.objects.filter(degree__initials = 'BCT', course = course_weight.course).first()
+        if bct_degree_course and bct_degree_course.course_type == 'CO':
+            weight += 256
         user_degree_course = DegreeCourse.objects.filter(degree = user.degree, course = course_weight.course).first()
         if user_degree_course and user_degree_course.course_type == 'CO':
             weight += 256
         if any(required_course in course_weight.course.courses_that_require.all() for required_course in DegreeCourse.objects.filter(degree = degree, course_type = 'CO')):
             weight += 128
-        bct_degree_course = DegreeCourse.objects.filter(degree__initials = 'BCT', course = course_weight.course).first()
-        if bct_degree_course and bct_degree_course.course_type == 'CO':
-            weight += 256
         if bct_degree_course and bct_degree_course.course_type == 'IN' and in_courses_completed < 4:
             weight += 64
         if course_weight.course in user.interested_courses.all() or any(course_weight.course in interested_course.required_courses.all() for interested_course in user.interested_courses.all()):
@@ -181,8 +186,7 @@ def auto_grade(request):
     for course_weight in course_weights:
         sections = Section.objects.filter(course = course_weight.course)
         for section in sections:
-            if (not any(section_time in user_schedule for section_time in section.schedule.all())) \
-                    and (section.course not in user_courses):
+            if is_section_available(user, section, user_schedule, user_courses):
                 user.sections.add(section)
                 user_schedule.extend(section.schedule.all())
                 user_courses.append(section.course)
@@ -212,3 +216,6 @@ def get_el_hours(user):
         else:
             num += course.hours
     return num
+
+def is_section_available(user, section, user_schedule, user_courses):
+    return (not any(section_time in user_schedule for section_time in section.schedule.all())) and (section.course not in user_courses) and not any(time not in user.free_times.all() for time in section.schedule.all())
