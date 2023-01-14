@@ -19,6 +19,7 @@ class User(PermissionsMixin, AbstractBaseUser, AbstractBaseModel):
     free_times = models.ManyToManyField('app.SectionTime', related_name = 'users_free', blank = True)
     semester = models.SmallIntegerField('Semestre', default = 1)
     weights = models.ManyToManyField('app.Course', related_name = 'user_weight', through = 'app.CourseWeight')
+    degree_end = models.IntegerField('Expected Hours', default = 0)
     is_staff = models.BooleanField(
         'staff status',
         default=False,
