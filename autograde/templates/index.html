@@ -1,0 +1,247 @@
+{% extends 'app/header.html' %} {% block content %}
+
+<!-- CheckBoxes -->
+
+<style>
+  body {
+    color: white;
+  }
+</style>
+
+<section class="white-section">
+  <div class="container">
+    <div class="box center">
+      <div class="box-title card-title-large" style="padding-bottom: 30px">
+        <h3>Selecione os horários em que deseja pegar matérias:</h3>
+      </div>
+      <form action="" method="post">
+        {% csrf_token %}
+        <div class="large-box" style="padding: 40px; text-align: center">
+          <div class="row">
+            <div class="col-2.6">
+              <div class="text-center box-checkbox">Horários</div>
+              <div class="text-center border-bottom border-dark">
+                08:00 - 10:00
+              </div>
+              <div class="text-center border-bottom border-dark">
+                10:00 - 12:00
+              </div>
+              <div class="text-center border-bottom border-dark">
+                12:00 - 13:30
+              </div>
+              <div class="text-center border-bottom border-dark">
+                13:30 - 15:30
+              </div>
+              <div class="text-center border-bottom border-dark">
+                15:30 - 17:30
+              </div>
+              <div class="text-center border-bottom border-dark">
+                17:30 - 19:00
+              </div>
+              <div class="text-center border-bottom border-dark">
+                19:00 - 21:00
+              </div>
+              <div class="text-center">21:00 - 23:00</div>
+            </div>
+
+            <div class="col">
+              <div class="text-center box-checkbox">Segunda</div>
+
+              <div class="form-check border-bottom border-dark">
+                {{ Form.mon0800 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+              <div class="form-check border-bottom border-dark">
+                {{ Form.mon1000 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+              <div class="border-bottom border-dark">Almoço</div>
+              <div class="form-check border-bottom border-dark">
+                {{ Form.mon1330 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+              <div class="form-check border-bottom border-dark">
+                {{ Form.mon1530 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+              <div class="border-bottom text-center border-dark">Janta</div>
+              <div class="form-check border-bottom border-dark">
+                {{ Form.mon1900 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+              <div class="form-check  border-dark">
+                {{ Form.mon2100 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="text-center box-checkbox">Terça</div>
+
+              <div class="form-check border-bottom border-dark">
+                {{ Form.tue0800 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+              <div class="form-check border-bottom border-dark">
+                {{ Form.tue1000 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+              <div class="border-bottom border-dark">Almoço</div>
+              <div class="form-check border-bottom border-dark">
+                {{ Form.tue1330 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+              <div class="form-check border-bottom border-dark">
+                {{ Form.tue1530 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+              <div class="border-bottom text-center border-dark">Janta</div>
+              <div class="form-check border-bottom border-dark">
+                {{ Form.tue1900 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+              <div class="form-check  border-dark">
+                {{ Form.tue2100 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="text-center box-checkbox">Quarta</div>
+
+              <div class="form-check border-bottom border-dark">
+                {{ Form.wed0800 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+              <div class="form-check border-bottom border-dark">
+                {{ Form.wed1000 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+              <div class="border-bottom border-dark">Almoço</div>
+              <div class="form-check border-bottom border-dark">
+                {{ Form.wed1330 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+              <div class="form-check border-bottom border-dark">
+                {{ Form.wed1530 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+              <div class="border-bottom text-center border-dark">Janta</div>
+              <div class="form-check border-bottom border-dark">
+                {{ Form.wed1900 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+              <div class="form-check border-dark">
+                {{ Form.wed2100 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="text-center box-checkbox">Quinta</div>
+
+              <div class="form-check border-bottom border-dark">
+                {{ Form.thu0800 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+              <div class="form-check border-bottom border-dark">
+                {{ Form.thu1000 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+              <div class="border-bottom border-dark">Almoço</div>
+              <div class="form-check border-bottom border-dark">
+                {{ Form.thu1330 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+              <div class="form-check border-bottom border-dark">
+                {{ Form.thu1530 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+              <div class="border-bottom text-center border-dark">Janta</div>
+              <div class="form-check border-bottom border-dark">
+                {{ Form.thu1900 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+              <div class="form-check  border-dark">
+                {{ Form.thu2100 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="text-center box-checkbox">Sexta</div>
+
+              <div class="form-check border-bottom border-dark">
+                {{ Form.fri0800 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+              <div class="form-check border-bottom border-dark">
+                {{ Form.fri1000 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+              <div class="border-bottom border-dark">Almoço</div>
+              <div class="form-check border-bottom border-dark">
+                {{ Form.fri1330 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+              <div class="form-check border-bottom border-dark">
+                {{ Form.fri1530 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+              <div class="border-bottom text-center border-dark">Janta</div>
+              <div class="form-check border-bottom border-dark">
+                {{ Form.fri1900 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+              <div class="form-check border-dark">
+                {{ Form.fri2100 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+            </div>
+
+            <div class="col">
+              <div class="text-center box-checkbox">Sábado</div>
+
+              <div class="form-check border-bottom border-dark">
+                {{ Form.sat0800 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+              <div class="form-check border-bottom border-dark">
+                {{ Form.sat1000 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+              <div class="border-bottom border-dark">Almoço</div>
+              <div class="form-check border-bottom border-dark">
+                {{ Form.sat1330 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+              <div class="form-check border-bottom border-dark">
+                {{ Form.sat1530 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+              <div class="border-bottom text-center border-dark">Janta</div>
+              <div class="form-check border-bottom border-dark">
+                {{ Form.sat1900 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+              <div class="form-check border-dark">
+                {{ Form.sat2100 }}
+                <label class="form-check-label" for="flexCheckDefault"></label>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <br />
+        <input
+          class="btn"
+          style="background-color: #e0ddaa"
+          type="submit"
+          value="Gerar Grade"
+        />
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock %}
