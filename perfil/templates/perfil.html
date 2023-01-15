@@ -9,6 +9,14 @@
 
         <h5 class="user-title">Nome:</h5>
         <p class="box-text ">{{user}}</p>
+        <h5 class="user-title">Semestre:</h5>
+        <p>
+        <form action="/perfil/" method="post">
+          {% csrf_token %}
+          {{ form }}
+          <input type="submit" class="btn" style="background-color: #e0ddaa" value="Salvar">
+        </form>
+        </p>
         <h5 class="user-title">Cursando:</h5>
         <p class="box-text">{{degree}}</p>
 
