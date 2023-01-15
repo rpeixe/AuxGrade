@@ -27,7 +27,7 @@ def register_request(request):
 			user.is_active = False
 			user.save()
 			activateEmail(request, user, form.cleaned_data.get('email'))
-			return redirect("menu_principal")
+			return redirect("home")
 		for error in list(form.errors.values()):
 			messages.error(request, error)
 	form = NewUserForm()
@@ -68,7 +68,7 @@ def password_reset_request(request):
 			associated_users = User.objects.filter(Q(email=data))
 			if associated_users.exists():
 				for user in associated_users:
-					subject = "Reinicialização de Senha"
+					subject = "Redefinição de Senha"
 					email_template_name = "account/password_reset_email.txt"
 					c = {
 					"email":user.email,
@@ -84,7 +84,8 @@ def password_reset_request(request):
 						send_mail(subject, email, 'auxgrade.noreply@gmail.com', ['auxgrade.noreply@gmail.com'], fail_silently=False)
 					except BadHeaderError:
 						return HttpResponse('Invalid header found.')
-					return redirect ("/password_reset/done/")
+					messages.success(request, 'Uma mensagem com informações para redefinir a senha foi enviado para seu e-mail.')
+					return redirect ("home")
 			messages.error(request, 'Um email inválido foi inserido.')
 	password_reset_form = PasswordResetForm()
 	return render(request=request, template_name="account/password_reset.html", context={"password_reset_form":password_reset_form})
