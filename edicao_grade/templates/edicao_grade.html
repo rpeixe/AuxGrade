@@ -8,37 +8,67 @@
   </style>
 
   <div class="container">
-    <form action="" method="post" novalidate> 
-      {% csrf_token %}
-      <div class="box center">
+    <div class="box center">
+      <form action="" method="post" novalidate>
+        {% csrf_token %}
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item" role="presentation">
-            <button type="button" class="nav-link active" data-toggle="tab" href="#home">
+            <button
+              type="button"
+              class="nav-link active"
+              data-toggle="tab"
+              href="#home"
+            >
               Seg
             </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button type="button" class="nav-link" data-toggle="tab" href="#terca">
+            <button
+              type="button"
+              class="nav-link"
+              data-toggle="tab"
+              href="#terca"
+            >
               Ter
             </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button type="button" class="nav-link" data-toggle="tab" href="#quarta">
+            <button
+              type="button"
+              class="nav-link"
+              data-toggle="tab"
+              href="#quarta"
+            >
               Qua
             </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button type="button" class="nav-link" data-toggle="tab" href="#quinta">
+            <button
+              type="button"
+              class="nav-link"
+              data-toggle="tab"
+              href="#quinta"
+            >
               Quin
             </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button type="button" class="nav-link" data-toggle="tab" href="#sexta">
+            <button
+              type="button"
+              class="nav-link"
+              data-toggle="tab"
+              href="#sexta"
+            >
               Sex
             </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button type="button" class="nav-link" data-toggle="tab" href="#sabado">
+            <button
+              type="button"
+              class="nav-link"
+              data-toggle="tab"
+              href="#sabado"
+            >
               Sab
             </button>
           </li>
@@ -128,10 +158,19 @@
           class="btn center"
           style="background-color: #e0ddaa"
           type="submit"
-          value="Submit"
+          value="Salvar Grade"
         />
+      </form>
+      <div  style="margin-top: 10px">
+        <button
+          class="btn"
+          style="background-color: #e0ddaa"
+          onclick="window.location.href='/horarios_livres';"
+        >
+        AutoGrade
+        </button>
       </div>
-    </form>
+    </div>
   </div>
 </section>
 {% endblock %}
