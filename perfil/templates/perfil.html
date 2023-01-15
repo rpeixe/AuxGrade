@@ -19,7 +19,9 @@
         </p>
         <h5 class="user-title">Cursando:</h5>
         <p class="box-text">{{degree}}</p>
-
+        <h5 class="user-title">Estimativa para término</h5>
+        <h5 class="user-title">em Semestres:</h5>
+        <p class="box-text">{{remaining_semesters}} semestres</p>
         <div>
           <button
             class="btn"
@@ -27,6 +29,13 @@
             onclick="window.location.href='/selecao/';"
           >
             Alterar
+          </button>
+          <button
+            class="btn"
+            style="background-color: #e0ddaa"
+            onclick="window.location.href='/perfil/calcular';"
+          >
+            Atualizar Estimativa
           </button>
         </div>
       </div>
