@@ -74,13 +74,15 @@ def grade_edit(request):
 
             for choice in lista:   
                     chosen_section_list.append(Section.objects.get(name=choice))
+            
             erro = 0
+            user_courses = get_user_courses(user)
             for chosen_section in chosen_section_list:
                 if selected_section_is_invalid(chosen_section, chosen_section_list):
                     erro = 1
                     messages.error(request, 'Conflito de horários entre matérias')
                     break
-                if remove_section_and_verify_time_conflict(user, chosen_section):
+                if course_already_taken(user_courses, chosen_section, chosen_section_list):
                     erro = 1
                     messages.error(request, 'Outra turma de uma mesma matéria ja foi selecionada')
                     break
@@ -129,18 +131,9 @@ def user_remove_section(user, userSections, dictionary):
     for section in sections_to_remove:
         user.sections.remove(section)
 
-def remove_section_and_verify_time_conflict(user, section):
-    course_that_should_be_removed = []
-    for schedule in section.schedule.all():
-        user_filtered_sections = user.sections.filter(schedule=schedule)
-        if user_filtered_sections != None:
-            for sec in user.sections.filter(schedule=schedule):
-                course_that_should_be_removed.append(sec.course)
-        user_courses = get_user_courses(user)
-        if section.course in user_courses and section.course not in course_that_should_be_removed:
-            return 1
-        for section in user_filtered_sections:
-            user.sections.remove(section)
+def course_already_taken(user_courses, chosen_section, chosen_section_list):
+    if chosen_section.course in user_courses or any(chosen_section.course == section.course for section in chosen_section_list if chosen_section != section):
+        return 1
 
 def selected_section_is_invalid(chosen_section, section_list):
     for chosen_section2 in section_list:

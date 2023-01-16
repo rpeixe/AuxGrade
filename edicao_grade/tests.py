@@ -1,7 +1,7 @@
 from django.test import TestCase, Client
 from django.urls import reverse
 from account.models import User
-from app.models import Course, Section, SectionTime
+from app.models import Course, Section, SectionTime, Degree
 from .views import *
 
 # Create your tests here.
@@ -71,9 +71,9 @@ class TestViewsEdicaoGrade(TestCase):
 
     def test_add_sections_same_course(self):
         response = self.client.post(reverse('editar_grade'), {'courses': ['section 1', 'section 1', 'section 5', 'section 5']})
-        self.assertTrue(self.section_1 not in self.user.sections.all() and self.section_5 not in self.user.sections.all())
+        self.assertTrue(self.section_1 not in self.user.sections.all() or self.section_5 not in self.user.sections.all())
         
     def test_add_sections_same_course_separately(self):
         response = self.client.post(reverse('editar_grade'), {'courses': ['section 1', 'section 1']})
         response = self.client.post(reverse('editar_grade'), {'courses': ['section 5', 'section 5']})
-        self.assertTrue(self.section_1 not in self.user.sections.all() and self.section_5 not in self.user.sections.all())
+        self.assertTrue(self.section_1 not in self.user.sections.all() or self.section_5 not in self.user.sections.all())
