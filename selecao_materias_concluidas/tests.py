@@ -58,7 +58,7 @@ class TestViewsSelecaoMaterias(TestCase):
     def test_course_selection_post(self):
         client = Client()
         client.force_login(self.user)
-        response = client.post(reverse('course_selection'), {'course_name': self.courses})
+        response = client.post(reverse('course_selection'), {'course_name': self.courses, 'save': True})
         self.assertEqual(response.status_code, 302)
         self.assertTrue(self.course_1 in self.user.finished_courses.all())
         self.assertTrue(self.course_2 in self.user.finished_courses.all())
@@ -85,7 +85,7 @@ class TestViewsSelecaoMaterias(TestCase):
     def test_interested_selection_post(self):
         client = Client()
         client.force_login(self.user)
-        response = client.post(reverse('interest_selection'), {'course_name': self.courses})
+        response = client.post(reverse('interest_selection'), {'course_name': self.courses, 'save': True})
         self.assertEqual(response.status_code, 302)
         self.assertTrue(self.course_1 in self.user.interested_courses.all())
         self.assertTrue(self.course_2 in self.user.interested_courses.all())
